@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="bookmark" href="/favicon.ico" type="image/x-icon"　/>
+	<title>File Manager Authorization</title>
+	<style type="text/css">
+#wrapper {
+  //background-color: green; /* for visualization purposes */
+  text-align: center;
+}
+#mydiv {
+  //background-color: red; /* for visualization purposes */
+  display: inline-block;
+}
+a{
+	color: blue;
+	text-decoration: none;
+}
+.outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  /* Whatever width you want */
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+var refreshIntervalId = null;
+function requestPermission(){
+	var ajax = new XMLHttpRequest();
+	ajax.open("GET", "/access", true);
+	ajax.send();
+	ajax.timeout = 60000;
+	ajax.ontimeout = function (e) {
+	    //requestPermission();
+    };
+	ajax.onreadystatechange = function() {
+		if (ajax.readyState == 4 && ajax.status == 200) {
+			var data = ajax.responseText;
+			//console.log(data);
+			if("true" == data)
+			{
+			    clearInterval(refreshIntervalId);
+				window.location = "/";
+			}
+			else if("false" == data){
+			    requestPermission();
+			}
+			else if("reject" == data){
+			}
+		}
+	}
+}
+//refreshIntervalId = window.setInterval(requestPermission, 1000);
+requestPermission();
+</script>
+<div class="outer">
+	<div class="middle">
+		<div class="inner">
+			<div id="wrapper">
+				<div id="mydiv">
+					<p>Por favor aceite no seu dispositivo<p/>
+					<br>
+					<img src="/auth_en.jpg" width="90%" alt="Accept Authorization" />
+					<br>
+					<br>
+					<a href="/">Atualizar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
