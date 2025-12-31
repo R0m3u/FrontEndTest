@@ -9,15 +9,15 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-[#043873] flex text-white">
+    <header className="bg-[#043873] flex text-white py-2 realative">
       <div className="flex items-center justify-between md:px-[3rem] p-[1rem] w-full">
         {/*brand logo*/}
         <div>
           <img src={logo} className="md:h-12 h-8" />
         </div>
         {/*menu*/}
-        <div className="md:flex items-center">
-          <ul className="md:flex hidden items-center">
+        <div className="lg:flex items-center">
+          <ul className="lg:flex hidden items-center">
             <li className="flex cursor-pointer">
               <span className="md:mr-[0.85rem]">Products</span>
               <img
@@ -45,7 +45,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="md:block hidden items-center">
+        <div className="lg:block hidden items-center">
           <Button
             name="Login"
             className="bg-[#ffe492] cursor-pointer text-[#000] py-[0.75rem] px-8 rounded-[8px] md:ml-[3rem]"

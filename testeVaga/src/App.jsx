@@ -27,7 +27,6 @@ function App() {
           description="Images, videos, PDFs and audio files are supported. Create math expressions and diagrams directly from the app. Take photos with the mobile app and save them to a note."
           styles={{
             backgroundImage: `url(${HeroImageOne})`,
-            // backgroundSize: 'cover',
             backgroundPosition: "center",
           }}
           image={HeroOne}
@@ -52,7 +51,7 @@ function App() {
           textColor="#000"
           image={HeroThree}
           flexDirection="row-reverse"
-          heigth="md:h-[35rem]"
+          height="md:h-[35rem]"
           marginImage="md:mr-[4rem] md:mb-[6rem]"
           buttonName="Try Whitspace free"
         />
