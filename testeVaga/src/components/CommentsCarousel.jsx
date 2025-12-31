@@ -13,7 +13,7 @@ import Avatar3 from "../assets/Avatar3.svg";
 
 const CommentsCarousel = () => {
   return (
-    <div className="py-14 px-4 md:px-8 lg:px-12">
+    <div className="py-12 px-4 md:px-8 lg:px-12">
       <h1 className="text-center text-[3rem] font-bold my-12">
         What Our Clients Says
       </h1>
