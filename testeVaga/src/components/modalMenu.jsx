@@ -35,27 +35,27 @@ const ModalMenu = ({ itsOpened }) => {
             href="#"
             className="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg"
           >
-            <span className="font-medium text-center">Products</span>
+            <span className="font-medium text-center">Produtos</span>
           </a>
           <a
             href="#"
             className="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg"
           >
-            <span className="font-medium">Solutions</span>
-          </a>
-
-          <a
-            href="#"
-            className="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg"
-          >
-            <span className="font-medium">Resources</span>
+            <span className="font-medium">Soluções</span>
           </a>
 
           <a
             href="#"
             className="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg"
           >
-            <span className="font-medium">Pricing</span>
+            <span className="font-medium">Recursos</span>
+          </a>
+
+          <a
+            href="#"
+            className="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg"
+          >
+            <span className="font-medium">Preços</span>
           </a>
         </nav>
         {/* Itens do menu */}

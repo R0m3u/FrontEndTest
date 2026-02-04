@@ -15,18 +15,18 @@ const CallToAction = () => {
     >
       <div className="max-w-3xl mx-auto text-center">
         <h1 className="text-[3rem] text-left md:text-center font-bold mb-4">
-          Your work, everywhere you are
+          Seu trabalho, onde quer que você esteja.        
         </h1>
 
         <p className="mb-8 text-left md:text-center text-[1.2rem] font-light">
-          Access your notes from your computer, phone or tablet by synchronising
-          with various services, including whitespace, Dropbox and OneDrive. The
-          app is available on Windows, macOS, Linux, iOS and Android.
+          Acesse suas anotações do seu computador, celular ou tablet sincronizando
+          com diversos serviços, incluindo whitespace, Dropbox e OneDrive. O
+          aplicativo está disponível para Windows, macOS, Linux, iOS e Android.
         </p>
 
         <div className="flex justify-left md:justify-center">
           <Button
-            name="Try taskey"
+            name="Experimente o Taskey."
             className="bg-[#4f9cf9] cursor-pointer text-[#fff] py-[0.75rem] px-8 rounded-[8px]"
             imgSrc={arrowRight}
             imgStyles="inline h-4 ml-[0.75rem]"

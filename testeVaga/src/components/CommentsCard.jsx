@@ -1,23 +1,53 @@
-const CommentsCard = ({ asset, avatar, lineColor, inlineStyle, nameColor }) => {
+const CommentsCard = ({
+  asset,
+  avatar,
+  lineColor = "bg-gray-200",
+  inlineStyle = "",
+  nameColor = "text-black",
+}) => {
   return (
-    <div className={`${inlineStyle} md:w-[25rem] px-[2rem] py-[3rem]`}>
+    <div
+      className={`
+        ${inlineStyle}
+        w-full
+        px-6 py-10
+        md:w-[22rem] md:px-8 md:py-12
+        lg:w-[25rem]
+      `}
+    >
       <div>
-        <img className="mb-8" src={asset} alt="container asset" />
-        <p>
-          Whitepate is designed as a collaboration tool for businesses that is a
-          full project management solution.
+        {asset ? (
+          <img className="mb-8" src={asset} alt="Ilustração do comentário" />
+        ) : null}
+
+        <p className="leading-relaxed">
+          O Whitepace foi projetado como uma ferramenta de colaboração para
+          empresas e funciona como uma solução completa de gestão de projetos.
         </p>
       </div>
-      <div class={`w-full h-[2px] ${lineColor} my-4`}></div>
-      <div className="flex items-center">
-        <div className="">
-          <img src={avatar} alt="avatar asset" />
-        </div>
-        <div className="w-[60%] ml-[2rem]">
-          <h3 className={`mb-[.5rem] font-bold text-[1.1rem] ${nameColor}`}>
+
+      <div className={`w-full h-[2px] ${lineColor} my-6`} />
+
+      <div className="flex items-center gap-6">
+        {avatar ? (
+          <img
+            src={avatar}
+            alt="Avatar do autor do comentário"
+            className="w-14 h-14 rounded-full object-cover"
+          />
+        ) : (
+          <div className="w-14 h-14 rounded-full bg-gray-200" />
+        )}
+
+        <div className="min-w-0">
+          <h3
+            className={`mb-2 font-bold text-[1.05rem] md:text-[1.1rem] ${nameColor}`}
+          >
             Oberon Shaw, MHC
           </h3>
-          <p>Head of Talent Acquisition, North America</p>
+          <p className="text-sm md:text-base">
+            Chefe de Aquisição de Talentos, América do Norte.
+          </p>
         </div>
       </div>
     </div>

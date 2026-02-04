@@ -1,166 +1,198 @@
-import { useState } from "react";
+import { useMemo } from "react";
 import CheckIcon from "../assets/checkIcon.svg";
 import GoldenCheckIcon from "../assets/goldenCheckIcon.svg";
 import CardPlan from "../components/Card";
 
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+
+// Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 const CardSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const cards = [
-    {
-      styleInline: "border border-solid border-[#FFE492]",
-      checkIcon: CheckIcon,
-      features: [
-        "Sync unlimited devices",
-        "10 GB monthly uploads",
-        "200 MB max. note size",
-        "Customize Home dashboard and access extra widgets",
-        "Connect primary Google Calendar account",
-        "Add due dates, reminders, and notifications to your tasks",
-      ],
-      title: "Free",
-      price: "0",
-    },
-    {
-      styleInline:
-        "border border-solid border-[#FFE492] bg-[#043873] text-[#fff]",
-      styleBlock: { textColor: "#fff" },
-      checkIcon: GoldenCheckIcon,
-      features: [
-        "Sync unlimited devices",
-        "10 GB monthly uploads",
-        "200 MB max. note size",
-        "Customize Home dashboard and access extra widgets",
-        "Connect primary Google Calendar account",
-        "Add due dates, reminders, and notifications to your tasks",
-      ],
-      btnName: "Get Started",
-      descriptionPlan: "Keep home and family on track",
-      title: "Personal",
-      price: "12.99",
-    },
-    {
-      styleInline: "border border-solid border-[#FFE492]",
-      checkIcon: CheckIcon,
-      features: [
-        "Sync unlimited devices",
-        "10 GB monthly uploads",
-        "200 MB max. note size",
-        "Customize Home dashboard and access extra widgets",
-        "Connect primary Google Calendar account",
-        "Add due dates, reminders, and notifications to your tasks",
-      ],
-      title: "Organization",
-      price: "49.99",
-    },
-  ];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
-  };
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
+  const cards = useMemo(
+    () => [
+      {
+        styleInline: "border border-solid border-[#FFE492]",
+        checkIcon: CheckIcon,
+        features: [
+          "Sincronize dispositivos ilimitados",
+          "10 GB de uploads mensais",
+          "Notas com até 200 MB",
+          "Personalize o painel inicial e acesse widgets adicionais",
+          "Conecte sua conta principal do Google Agenda",
+          "Adicione prazos, lembretes e notificações às suas tarefas",
+        ],
+        title: "Grátis",
+        price: "0",
+        btnName: "Começar",
+      },
+      {
+        styleInline:
+          "border border-solid border-[#FFE492] bg-[#043873] text-white",
+        styleBlock: { color: "#fff" },
+        checkIcon: GoldenCheckIcon,
+        features: [
+          "Sincronize dispositivos ilimitados",
+          "10 GB de uploads mensais",
+          "Notas com até 200 MB",
+          "Personalize o painel inicial e acesse widgets adicionais",
+          "Conecte sua conta principal do Google Agenda",
+          "Adicione prazos, lembretes e notificações às suas tarefas",
+        ],
+        btnName: "Get Started",
+        descriptionPlan: "Keep home and family on track",
+        title: "Pessoal",
+        price: "12.99",
+      },
+      {
+        styleInline: "border border-solid border-[#FFE492]",
+        checkIcon: CheckIcon,
+        features: [
+          "Sincronize dispositivos ilimitados",
+          "10 GB de uploads mensais",
+          "Notas com até 200 MB",
+          "Personalize o painel inicial e acesse widgets adicionais",
+          "Conecte sua conta principal do Google Agenda",
+          "Adicione prazos, lembretes e notificações às suas tarefas",
+        ],
+        title: "Organizacional",
+        price: "49.99",
+        btnName: "Falar com vendas",
+      },
+    ],
+    []
+  );
 
   return (
-    <div className="mt-[5rem] px-4">
+    <div className="mt-[5rem] px-4 mb-[7rem]">
       <div className="mb-12">
         <h1 className="text-[3rem] font-bold text-center mb-4">
-          Choose Your Plan
+          Escolha Seu Plano
         </h1>
         <p className="px-2 md:p-0 md:max-w-[60%] text-center m-auto">
-          Whether you want to get organized, keep your personal life on track,
-          or boost workplace productivity, Evernote has the right plan for you.
+          Seja para se organizar, manter sua vida pessoal nos eixos ou aumentar
+          a produtividade no trabalho, a Whitepace tem o plano certo para você.
         </p>
       </div>
 
-      {/* Desktop View (original) */}
-      <div className="hidden md:flex md:gap-6">
+      {/* DESKTOP (lg+): 3 cards com o do meio maior */}
+      <div className="hidden lg:flex lg:gap-6 lg:items-center">
         {cards.map((card, index) => (
-          <div key={index} className="flex-1">
-            <CardPlan {...card} />
+          <div
+            key={index}
+            className={`${
+              index === 1 ? "flex-[1.15]" : "flex-1"
+            } flex justify-center`}
+          >
+            <CardPlan {...card} variant={index === 1 ? "featured" : "default"} />
           </div>
         ))}
       </div>
 
-      {/* Mobile Carousel */}
-      <div className="md:hidden">
-        {/* Carousel Container */}
-        <div className="relative overflow-hidden">
-          {/* Slides */}
-          <div
-            className="flex transition-transform duration-300 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+      {/* MOBILE + TABLET (<lg): Swiper com peek dos dois lados (mais vazado) */}
+      <div className="lg:hidden">
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            loop
+            centeredSlides
+            grabCursor
+            spaceBetween={1}
+            slidesPerView={1.45}
+            slidesOffsetBefore={12}
+            slidesOffsetAfter={12}
+            breakpoints={{
+              480: {
+                slidesPerView: 1.55,
+                spaceBetween: 1,
+                slidesOffsetBefore: 14,
+                slidesOffsetAfter: 14,
+              },
+              640: {
+                slidesPerView: 1.7,
+                spaceBetween: 1,
+                slidesOffsetBefore: 16,
+                slidesOffsetAfter: 16,
+              },
+              768: {
+                slidesPerView: 1.9,
+                spaceBetween: 1,
+                slidesOffsetBefore: 18,
+                slidesOffsetAfter: 18,
+              },
+              900: {
+                slidesPerView: 2.05,
+                spaceBetween: 1,
+                slidesOffsetBefore: 20,
+                slidesOffsetAfter: 20,
+              },
+            }}
+            navigation={{
+              nextEl: ".plans-swiper-next",
+              prevEl: ".plans-swiper-prev",
+            }}
+            pagination={{
+              el: ".plans-swiper-pagination",
+              clickable: true,
+            }}
+            className="!pb-12"
           >
             {cards.map((card, index) => (
-              <div key={index} className="w-full flex-shrink-0 px-4">
-                <CardPlan {...card} />
-              </div>
+              <SwiperSlide key={index}>
+                <div className="px-2">
+                  <CardPlan
+                    {...card}
+                    variant={index === 1 ? "featured" : "default"}
+                  />
+                </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
 
-          {/* Navigation Buttons */}
+          {/* Gradientes laterais (reforça o “tem mais”) */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white/90 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white/90 to-transparent" />
+
+          {/* Botões (custom) */}
           <button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10"
-            aria-label="Previous slide"
+            className="plans-swiper-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10"
+            aria-label="Anterior"
+            type="button"
           >
-            <svg
-              className="w-6 h-6 text-gray-800"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
+            ←
           </button>
 
           <button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 bg-white/80 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10"
-            aria-label="Next slide"
+            className="plans-swiper-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10"
+            aria-label="Próximo"
+            type="button"
           >
-            <svg
-              className="w-6 h-6 text-gray-800"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
+            →
           </button>
+
+          {/* Dots (custom container do Swiper) */}
+          <div className="plans-swiper-pagination flex justify-center gap-3 mt-6" />
         </div>
 
-        {/* Dots Indicator */}
-        <div className="flex justify-center mt-8 space-x-3">
-          {cards.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? "bg-[#043873] w-8"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
+        {/* Estilo mínimo pros bullets */}
+        <style>{`
+          .plans-swiper-pagination .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #d1d5db;
+            opacity: 1;
+            border-radius: 9999px;
+            transition: all .2s ease;
+          }
+          .plans-swiper-pagination .swiper-pagination-bullet-active {
+            width: 32px;
+            background: #043873;
+          }
+        `}</style>
       </div>
     </div>
   );

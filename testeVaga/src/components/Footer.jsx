@@ -16,13 +16,13 @@ const Footer = () => {
       {/* TOP CTA */}
       <div className="text-white flex flex-col items-center justify-center py-[4rem] gap-[2rem] px-4">
         <h1 className="font-bold text-[2.2rem] md:text-[3rem] text-center">
-          Try Whitepace <br /> today
+          Experimente o Whitepace hoje mesmo
         </h1>
 
         <p className="text-center text-sm md:text-base">
-          Get started for free.
+          Comece gratuitamente.
           <br />
-          Add your whole team as your needs grow.
+          Adicione toda a sua equipe conforme suas necessidades aumentarem.
         </p>
 
         <Button
@@ -32,7 +32,9 @@ const Footer = () => {
           imgStyles="inline h-4 ml-[0.75rem]"
         />
 
-        <p className="text-sm md:text-base">On a big team? Contact sales</p>
+        <p className="text-sm md:text-base">
+          Equipe grande? Contate o setor de vendas
+        </p>
 
         <div className="flex gap-[2rem] flex-wrap justify-center">
           <img src={AppleIcon} alt="apple icon" />
@@ -57,37 +59,37 @@ const Footer = () => {
         <div className="md:w-[15%]">
           <img src={BlueLogo} alt="brand icon" className="w-[10rem] mb-4" />
           <p className="text-[#F7F7EE] text-sm">
-            whitepace was created for the new ways we live and work. We make a
-            better workspace around the world
+            whitepace foi criado para os novos modos de vida e trabalho. Criamos um
+            melhor ambiente de trabalho em todo o mundo
           </p>
         </div>
 
         <div>
-          <h2 className="font-bold mb-2">Product</h2>
+          <h2 className="font-bold mb-2">Produto</h2>
           <div className="text-[#F7F7EE] space-y-1 text-sm">
             <span className="block">
-              <a href="#">Overview</a>
+              <a href="#">Visão geral</a>
             </span>
             <span className="block">
-              <a href="#">Pricing</a>
+              <a href="#">Preços</a>
             </span>
             <span className="block">
-              <a href="#">Customer stories</a>
+              <a href="#">Histórias de clientes</a>
             </span>
           </div>
         </div>
 
         <div>
-          <h2 className="font-bold mb-2">Resourses</h2>
+          <h2 className="font-bold mb-2">Recursos</h2>
           <div className="text-[#F7F7EE] space-y-1 text-sm">
             <span className="block">
               <a href="#">Blog</a>
             </span>
             <span className="block">
-              <a href="#">Guides & tutorials</a>
+              <a href="#">Guias e tutoriais</a>
             </span>
             <span className="block">
-              <a href="#">Help Center</a>
+              <a href="#">Central de Ajuda</a>
             </span>
           </div>
         </div>
@@ -109,10 +111,11 @@ const Footer = () => {
 
         <div className="md:max-w-[220px]">
           <h2 className="font-bold text-[1.6rem] md:text-[2rem] mb-2">
-            Try it today
+            Experimente hoje
           </h2>
           <p className="mt-4 text-sm">
-            Get started for free. Add your <br /> whole team as your needs grow.
+              Comece gratuitamente. Adicione toda a sua <br/>
+              equipe à medida que suas necessidades crescerem.          
           </p>
           <Button
             name="Start today"
@@ -133,8 +136,8 @@ const Footer = () => {
             <img src={Icon} alt="" />
           </div>
 
-          <p>Terms & privacy</p>
-          <p>Security</p>
+          <p>Termos & privacidade</p>
+          <p>Segunrança</p>
           <p>Status</p>
           <p>&#169; 2021 Whitespace LLC.</p>
         </div>

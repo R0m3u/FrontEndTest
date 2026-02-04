@@ -5,9 +5,9 @@ import Slack from "../assets/Slack.jpg";
 
 const Sponsors = () => {
   return (
-    <section className="py-16">
+    <section className="py-16 px-4">
       <h1 className="text-center text-3xl md:text-4xl font-bold mb-10">
-        Our sponsors
+        Nossos patrocinadores
       </h1>
 
       <div
